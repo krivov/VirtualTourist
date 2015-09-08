@@ -1,25 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9aB-Ns-Sli">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Virtual tourist-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QIN-X9-Ox2">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Mat-zM-h1k" appends="YES" id="bdd-dH-JEm"/>
+                                </connections>
+                            </mapView>
+                            <view hidden="YES" alpha="0.69999999999999973" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fut-XT-sIs">
+                                <rect key="frame" x="16" y="442" width="288" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Pins to delete" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99K-uH-oGz">
+                                        <rect key="frame" x="76" y="4" width="137" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="XD4-sj-PuK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2O7-PD-ayl"/>
+                                    <constraint firstItem="99K-uH-oGz" firstAttribute="top" secondItem="fut-XT-sIs" secondAttribute="top" constant="4" id="bbj-oh-C5P"/>
+                                    <constraint firstAttribute="centerX" secondItem="99K-uH-oGz" secondAttribute="centerX" id="oza-zS-dSk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QIN-X9-Ox2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Dkn-2e-TCd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QIN-X9-Ox2" secondAttribute="bottom" id="Ea2-Nx-A0X"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QIN-X9-Ox2" secondAttribute="trailing" constant="-16" id="Xfa-tl-RcU"/>
+                            <constraint firstItem="fut-XT-sIs" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="lth-jn-1Yh"/>
+                            <constraint firstItem="QIN-X9-Ox2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="64" id="mHV-05-rNd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fut-XT-sIs" secondAttribute="bottom" constant="8" id="ngA-Xd-7BD"/>
+                            <constraint firstItem="fut-XT-sIs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tgg-lm-RbI"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Virtual tourist" id="2Dn-ij-kM4">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="rUB-j0-MX4">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="BYZ-38-t0r" id="6aY-wp-oNn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="deleteAlert" destination="fut-XT-sIs" id="GMa-8D-ePe"/>
+                        <outlet property="mapView" destination="QIN-X9-Ox2" id="aSj-e7-vfd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Mat-zM-h1k">
+                    <connections>
+                        <action selector="longPress:" destination="BYZ-38-t0r" id="rWI-G1-b3b"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="1192" y="314"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hZq-8W-Glt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9aB-Ns-Sli" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jcm-ER-a4R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="JKO-RG-q5z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ie9-yu-QcF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="716" y="314"/>
         </scene>
     </scenes>
 </document>
