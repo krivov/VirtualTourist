@@ -15,6 +15,7 @@
 		4847860D1B9E3EF6006A8190 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4847860B1B9E3EF6006A8190 /* LaunchScreen.xib */; };
 		484786191B9E3EF6006A8190 /* VirtualTouristTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484786181B9E3EF6006A8190 /* VirtualTouristTests.swift */; };
 		4873EB5F1B9F7DCD008A1B46 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4873EB5E1B9F7DCD008A1B46 /* MapKit.framework */; };
+		4873EB611B9F840F008A1B46 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4873EB601B9F840F008A1B46 /* PhotoAlbumViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		484786171B9E3EF6006A8190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484786181B9E3EF6006A8190 /* VirtualTouristTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTouristTests.swift; sourceTree = "<group>"; };
 		4873EB5E1B9F7DCD008A1B46 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4873EB601B9F840F008A1B46 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoAlbumViewController.swift; path = Controllers/PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				484786041B9E3EF6006A8190 /* MapViewController.swift */,
+				4873EB601B9F840F008A1B46 /* PhotoAlbumViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				484786051B9E3EF6006A8190 /* MapViewController.swift in Sources */,
 				484786031B9E3EF6006A8190 /* VirtualTourist.xcdatamodeld in Sources */,
 				484786001B9E3EF6006A8190 /* AppDelegate.swift in Sources */,
+				4873EB611B9F840F008A1B46 /* PhotoAlbumViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
