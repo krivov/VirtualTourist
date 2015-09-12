@@ -56,7 +56,26 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate, UICollectio
     }
 
     @IBAction func getNewCollection(sender: UIBarButtonItem) {
-        println("getNewCollection")
+        
+        //if no photos are selected
+        if selectedIndexes.count == 0 {
+            
+            //get a new set of images.
+            getNewPhotoSet()
+            
+        } else {
+            //if some photos are selected delete them
+            for index in selectedIndexes {
+                sharedContext.deleteObject(fetchedResultsController.objectAtIndexPath(index) as! Photo)
+            }
+            
+            //empty indexes and update the button
+            selectedIndexes = []
+            updateBottomButton()
+            
+            //save to CoreData
+            CoreDataStackManager.sharedInstance().saveContext()
+        }
     }
     
     //show alert
@@ -125,6 +144,55 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate, UICollectio
         } else {
             newCollectionButton.title = "New Collection";
         }
+    }
+    
+    //download new photos
+    func getNewPhotoSet() {
+        
+        //disable button
+        newCollectionButton.enabled = false
+        
+        //delete all existing photos
+        for photo in fetchedResultsController.fetchedObjects as! [Photo] {
+            sharedContext.deleteObject(photo)
+        }
+        
+        //save CoreData
+        CoreDataStackManager.sharedInstance().saveContext()
+        
+        //download a new set of photos
+        FlickrClient.sharedInstance().downloadPhotosForPin(pin, completionHandler: {
+            success, error in
+            
+            if success {
+                
+                //save and enable the button
+                dispatch_async(dispatch_get_main_queue(), {
+                    CoreDataStackManager.sharedInstance().saveContext()
+                    self.newCollectionButton.enabled = true
+                })
+            } else {
+                
+                //show error alert and enable button
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.showAlertWithTitleAndRetry("Error", message: error!.localizedDescription, retryNewPhotoSet: true)
+                    self.newCollectionButton.enabled = true
+                })
+            }
+        })
+    }
+    
+    //retry to download photo
+    func retryDownloadPhoto(photo: Photo) {
+        
+        //Get image for photo object, and save the context
+        FlickrClient.sharedInstance().downloadPhotoImage(photo, completionHandler: {
+            success, error in
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                CoreDataStackManager.sharedInstance().saveContext()
+            })
+        })
     }
     
     //=====================================================================
@@ -263,7 +331,7 @@ class PhotoAlbumViewController: UIViewController, MKMapViewDelegate, UICollectio
             cell.imageView.alpha = 0.0
             cell.imageView.image = nil
             
-            //retryImageDownloadForPhoto(photo)
+            retryDownloadPhoto(photo)
             return
         }
         
