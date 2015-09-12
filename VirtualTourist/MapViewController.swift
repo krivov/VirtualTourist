@@ -142,6 +142,30 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         saveMapViewRegion()
     }
     
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        
+        if isEditButtonTapped {
+            
+            let pin = view.annotation as! Pin
+            sharedContext.deleteObject(pin)
+            mapView.removeAnnotation(pin)
+            
+            CoreDataStackManager.sharedInstance().saveContext()
+            
+        } else {
+            
+            // Get the new View Controller
+            let photoAlbumVC = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoAlbumViewController") as! PhotoAlbumViewController
+            
+            // Pass the pin
+            photoAlbumVC.pin = view.annotation as! Pin
+            
+            // Then make the segue
+            self.navigationController?.pushViewController(photoAlbumVC, animated: true)
+        }
+        
+    }
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         //Use dequeued pin annotation view if available, otherwise create a new one
