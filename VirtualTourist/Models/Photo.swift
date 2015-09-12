@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+@objc(Photo)
+
 class Photo: NSManagedObject {
     
     //MARK: - Photo model properties
