@@ -41,18 +41,26 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2O7-PD-ayl"/>
                                     <constraint firstItem="99K-uH-oGz" firstAttribute="top" secondItem="fut-XT-sIs" secondAttribute="top" constant="4" id="bbj-oh-C5P"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="nNX-KH-biF"/>
                                     <constraint firstAttribute="centerX" secondItem="99K-uH-oGz" secondAttribute="centerX" id="oza-zS-dSk"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QIN-X9-Ox2" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="7HB-jn-MaS"/>
+                            <constraint firstItem="fut-XT-sIs" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Cv0-Bv-XBP"/>
                             <constraint firstItem="QIN-X9-Ox2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Dkn-2e-TCd"/>
+                            <constraint firstItem="fut-XT-sIs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="EQ3-or-3Jo"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QIN-X9-Ox2" secondAttribute="bottom" id="Ea2-Nx-A0X"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fut-XT-sIs" secondAttribute="bottom" constant="8" id="FmE-iB-bli"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QIN-X9-Ox2" secondAttribute="trailing" constant="-16" id="SJ7-Ps-nde"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QIN-X9-Ox2" secondAttribute="trailing" constant="-16" id="Xfa-tl-RcU"/>
+                            <constraint firstItem="QIN-X9-Ox2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="epG-MY-auv"/>
                             <constraint firstItem="fut-XT-sIs" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="lth-jn-1Yh"/>
                             <constraint firstItem="QIN-X9-Ox2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="64" id="mHV-05-rNd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fut-XT-sIs" secondAttribute="bottom" constant="8" id="ngA-Xd-7BD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="QIN-X9-Ox2" secondAttribute="bottom" id="rid-q0-ciP"/>
                             <constraint firstItem="fut-XT-sIs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="tgg-lm-RbI"/>
                         </constraints>
                     </view>
